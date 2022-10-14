@@ -11,7 +11,7 @@ void readFlow() {
     flowRate = ((1000.0 / (millis() - last_samplingFR)) * pulseCount) / calibrationFactor;
     last_samplingFR = millis();
     flow = flowRate / 60 * (var.river_area / 0.025);
-    velocity = cbrt(flow);
+    velocity = cbrt(flowRate);
     pulseCount = 0;
     attachInterrupt(digitalPinToInterrupt(flowPin), pulseCounter, FALLING);
   }
